@@ -15,12 +15,12 @@ def init_simulation(include_planet9: bool):
     sim.add(m = 5.1e-5, a=30.06, e = 0.01) #Neptune
     
     if include_planet9:
-        sim.add(m=1.5e-5, a = 700, e = 0.6) #Estimated stats of planet 9
+        sim.add(m=2e-5, a = 700, e = 0.6) #Estimated stats of planet 9
 
-    #Adding TNOs to simulation
+    #Adding TNOs to simulation with randomness
     for i in range(30):
-        rand_a = random.uniform(325,800) #Estimated Semi Major Axis of planet 9
-        rand_e = random.uniform(0.1, 0.6) #Estimated eccentricity of planet 9
+        rand_a = random.uniform(325,800)
+        rand_e = random.uniform(0.1, 0.6) 
         rand_inc = random.uniform(np.radians(10),np.radians(30))
         pi = np.pi
         rand_omega = random.uniform(0,2*pi)
