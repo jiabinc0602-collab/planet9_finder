@@ -1,6 +1,12 @@
 from sim.engine import init_simulation
+from analysis.visualize import plot_orbit
 
+#Creating sim object
 sim = init_simulation()
 
-sim.integrate(100)
-sim.status()
+
+print("Simulating 1,000 years")
+sim.integrate(1000)
+
+print("Saving plot as image")
+plot_orbit(sim)
