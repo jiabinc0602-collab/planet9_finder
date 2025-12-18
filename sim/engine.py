@@ -2,7 +2,7 @@ import rebound
 import random
 import numpy as np
 
-def init_simulation(include_planet9: bool):
+def init_simulation(p9_stats = None):
     sim = rebound.Simulation() #Created simulation
 
     sim.units = ('yr', 'AU', "Msun")
@@ -14,9 +14,16 @@ def init_simulation(include_planet9: bool):
     sim.add(m = 4.3e-5, a = 19.19, e = 0.046) #Uranus
     sim.add(m = 5.1e-5, a=30.06, e = 0.01) #Neptune
     
-    if include_planet9:
-        sim.add(m=2e-5, a = 700, e = 0.6) #Estimated stats of planet 9
-
+    if p9_stats:
+        sim.add(
+            m = p9_stats['m'],
+            a = p9_stats['a'],
+            e = p9_stats['e'],
+            inc = p9_stats['inc'],
+            Omega = p9_stats['Omega'],
+            omega = p9_stats['omega']
+        )
+    
     #Adding TNOs to simulation with randomness
     for i in range(30):
         rand_a = random.uniform(325,800)
